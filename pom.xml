@@ -25,6 +25,20 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<classifier>mule-application</classifier>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>    
+						<!-- Deploy User Parameter -->
+						<username>pandu06</username>
+						<password>Pandu_2018</password>
+						<!-- Environment Parameter -->
+						<environment>Sandbox</environment>
+						<applicationName>createAccount2</applicationName>
+						<muleVersion>4.2.2</muleVersion>						
+						<workerType>Micro</workerType>
+						<workers>1</workers>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>	
 				</configuration>
 			</plugin>
 		</plugins>
