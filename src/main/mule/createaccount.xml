@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3d5a7638-4fe0-4e80-90d3-c0389aeca869" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="createaccountFlow" doc:id="16fe2766-a3c3-414a-9054-4959bb1e589a" >
+		<http:listener doc:name="Listener" doc:id="17738b56-b742-4a30-9f79-faf613d7e38d" config-ref="HTTP_Listener_config" path="/createAccount"/>
+		<set-payload value="Account Created successfully(but not really)" doc:name="Set Payload" doc:id="9de0c68a-455f-4d51-9525-26c193070180" />
+		<logger level="INFO" doc:name="Logger" doc:id="7a33ec66-eab2-4e23-820e-328131771cf7" message="The Payload is.........................#[payload]"/>
+		<flow-ref doc:name="Flow Reference" doc:id="1b879258-c2f5-44f0-b28f-ca76ccf56647" name="createaccountFlow1"/>
+	</flow>
+	<flow name="createaccountFlow1" doc:id="b7cc27f1-1703-4325-b852-97457d03ee87" >
+		<set-payload value="welcome to mule4 esb" doc:name="Set Payload" doc:id="76a8856f-e1ae-40a9-9276-27c06b45caaa" />
+		<logger level="INFO" doc:name="Logger" doc:id="3d4f9c4c-0482-4dd8-adc9-bde2300d2a10" message="The payload is-------------------#[payload]" />
+	</flow>
+</mule>
